@@ -9,17 +9,15 @@ describe 'sprout-bash-it::default' do
       .with(repository: runner.node['bash_it']['repository'])
   end
 
+  it 'includes the custom_plugins recipe' do
+    runner.converge(described_recipe)
+    expect(runner).to include_recipe('sprout-bash-it::custom_plugins')
+  end
+
   it 'copies in a .bash_profile to user home' do
     runner.converge(described_recipe)
     expect(runner).to create_template(::File.expand_path('.bash_profile', runner.node['sprout']['home']))
       .with(owner: runner.node['current_user'])
-  end
-
-  it 'creates plugins for bash-it' do
-    runner.node.set['bash_it']['custom_plugins'] = { 'sprout-bash-it' =>
-      ['bash_it/custom/disable_ctrl-s_output_control.bash']
-    }
-    expect(runner).to create_sprout_bash_it_custom_plugin('bash_it/custom/disable_ctrl-s_output_control.bash')
   end
 
   context 'when the git repository is specified' do
