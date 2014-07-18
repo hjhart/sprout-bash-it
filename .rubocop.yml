@@ -6,6 +6,7 @@ AllCops:
   Exclude:
    - cookbooks/**/*
    - tmp/**/*
+   - vendor/**/*
 
 SingleSpaceBeforeFirstArg:
   Enabled: false # Useful for more readable alignment of method call args
