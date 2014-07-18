@@ -6,7 +6,7 @@ describe 'sprout-bash-it::default' do
   it 'clones the git repository into the chef cache directory' do
     runner.converge(described_recipe)
     expect(runner).to sync_git("#{Chef::Config[:file_cache_path]}/bash_it")
-      .with(repository: runner.node['bash_it']['repository'])
+      .with(repository: runner.node['sprout']['bash_it']['repository'])
   end
 
   it 'includes the custom_plugins recipe' do
@@ -28,7 +28,7 @@ describe 'sprout-bash-it::default' do
   context 'when the git repository is specified' do
     it 'syncs that git repository' do
       custom_git_repo = 'https://github.com/hjhart/whatever-this-may-be.git'
-      runner.node.set['bash_it']['repository'] = custom_git_repo
+      runner.node.set['sprout']['bash_it']['repository'] = custom_git_repo
       runner.converge(described_recipe)
       expect(runner).to sync_git("#{Chef::Config[:file_cache_path]}/bash_it").with(repository: custom_git_repo)
     end
@@ -36,7 +36,7 @@ describe 'sprout-bash-it::default' do
 
   context 'when the directory is specified' do
     it 'creates the bash_it directory, as specified' do
-      runner.node.set['bash_it']['dir'] = '/Users/hjhart/.bash_it'
+      runner.node.set['sprout']['bash_it']['dir'] = '/Users/hjhart/.bash_it'
       runner.converge(described_recipe)
       expect(runner).to create_directory('/Users/hjhart/.bash_it')
     end
@@ -44,7 +44,7 @@ describe 'sprout-bash-it::default' do
 
   context 'when the bashrc_path is set' do
     it 'creates that file where specified' do
-      runner.node.set['bash_it']['bashrc_path'] = '/Users/hjhart/.hjhart_bash_profile'
+      runner.node.set['sprout']['bash_it']['bashrc_path'] = '/Users/hjhart/.hjhart_bash_profile'
       runner.converge(described_recipe)
       expect(runner).to create_template('/Users/hjhart/.hjhart_bash_profile').with(owner: runner.node['current_user'])
     end
