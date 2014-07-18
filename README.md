@@ -1,6 +1,6 @@
 # sprout-exemplar cookbook
 
-[![Build Status](https://travis-ci.org/pivotal-sprout/sprout-exemplar.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-exemplar)
+[![Build Status](https://travis-ci.org/hjhart/sprout-bash-it.png?branch=master)](https://travis-ci.org/hjhart/sprout-bash-it)
 
 Template repo for creating standalone cookbooks
 
