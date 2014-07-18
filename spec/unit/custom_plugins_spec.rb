@@ -3,6 +3,9 @@ require 'unit/spec_helper'
 describe 'sprout-bash-it::custom_plugins' do
   let(:runner) { ChefSpec::Runner.new }
 
+  # Apparently it is very difficult to test LWRP w/ ChefSpec when your
+  # cookbook name has hyphens in it. Perhaps we should consider changing cookbook names
+  # to use underscores instead of dashes.
   xit 'creates a template for custom plugins' do
     runner.node.set['bash_it'] = {
       'custom_plugins' => { 'sprout-bash-it' => ['bash_it/custom/something.bash'] },
