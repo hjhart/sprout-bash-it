@@ -7,7 +7,7 @@ node.default['bash_it']['enabled_plugins'] = {
 }
 
 node.default['bash_it']['custom_plugins'] = {
-  'sprout-base' => %w(
+  'sprout-bash-it' => %w(
     bash_it/custom/disable_ctrl-s_output_control.bash
     bash_it/custom/enable_ctrl-o_history_execution.bash
     bash_it/custom/ensure_usr_local_bin_first.bash
