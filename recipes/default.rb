@@ -26,4 +26,3 @@ end
 
 include_recipe 'sprout-bash-it::custom_plugins'
 include_recipe 'sprout-bash-it::enabled_plugins'
-
