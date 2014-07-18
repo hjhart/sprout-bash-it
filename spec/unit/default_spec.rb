@@ -14,6 +14,11 @@ describe 'sprout-bash-it::default' do
     expect(runner).to include_recipe('sprout-bash-it::custom_plugins')
   end
 
+  it 'includes the enabled_feature recipe' do
+    runner.converge(described_recipe)
+    expect(runner).to include_recipe('sprout-bash-it::enabled_plugins')
+  end
+
   it 'copies in a .bash_profile to user home' do
     runner.converge(described_recipe)
     expect(runner).to create_template(::File.expand_path('.bash_profile', runner.node['sprout']['home']))
