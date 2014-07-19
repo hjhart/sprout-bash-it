@@ -29,4 +29,10 @@ describe 'sprout-bash-it::default' do
   it 'creates enabled plugins' do
     expect(File).to be_exists("#{ENV['HOME']}/.bash_it/plugins/enabled/ssh.plugin.bash")
   end
+
+  it 'sets the bash profile to the theme' do
+    bash_profile = "#{ENV['HOME']}/.bash_profile"
+    contents = File.read(bash_profile)
+    expect(contents).to contain('bobby')
+  end
 end
