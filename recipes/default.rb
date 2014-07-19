@@ -3,7 +3,6 @@ bash_it_config = node['sprout']['bash_it']
 bash_it_dir = bash_it_config['dir']
 
 git "#{Chef::Config[:file_cache_path]}/bash_it" do
-  user node['current_user']
   repository bash_it_config['repository']
   revision bash_it_version
   destination "#{Chef::Config[:file_cache_path]}/bash_it"
