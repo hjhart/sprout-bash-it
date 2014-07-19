@@ -22,14 +22,20 @@ bundle exec soloist
 
 ### Attributes
 
-*NOTE:* All preferences are namespaced under `sprout => exemplar` they include:
+*NOTE:* All preferences are namespaced under `sprout => bash_it` they include:
 
-* `path` &mdash; The path to the file that exemplar touches; default is `~/exemplar`
+* `theme` &mdash; Bash it theme to use, defaults to 'bobby'
+* `repository` &mdash; Repository to use. If you want to use a different theme, fork the original.
+* `bashrc_path`  &mdash; Defaults to ~/.bash_profile
+* `dir`  &mdash; Directory to store bash_it. Defaults to ~/.bash_it
+* `custom_plugins` &mdash; Hash of 'cookbook' => 'Custom plugins to install.' Check `attributes/default` for defaults.
+* `enabled_plugins` &mdash; Plugins to enable in bash-it. Check `attributes/default` for defaults.
 
 ### Recipes
 
-1. `sprout-exemplar`
-1. `sprout-exemplar::path`
+1. `sprout-bash-it`
+1. `sprout-bash-it::custom_plugins`
+1. `sprout-bash-it::enabled_plugins`
 
 ## Contributing
 
