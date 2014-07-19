@@ -21,7 +21,7 @@ end
 
 template bash_it_config['bashrc_path'] do
   source 'bash_it/bashrc.erb'
-  cookbook 'sprout-base'
+  cookbook 'sprout-bash-it'
   owner node['current_user']
   variables bash_it_dir: bash_it_dir, bash_it_theme: bash_it_config['theme']
   mode '0777'
