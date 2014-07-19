@@ -33,6 +33,6 @@ describe 'sprout-bash-it::default' do
   it 'sets the bash profile to the theme' do
     bash_profile = "#{ENV['HOME']}/.bash_profile"
     contents = File.read(bash_profile)
-    expect(contents).to contain('bobby')
+    expect(contents).to include('bobby')
   end
 end
