@@ -42,7 +42,17 @@ describe 'sprout-bash-it::default' do
     end
   end
 
-  context 'when the bashrc_path is set' do
+  context 'when the theme is specified' do
+    it 'passes the theme as a variable to the bashrc template' do
+      runner.node.set['sprout']['bash_it']['theme'] = 'wanelo'
+      runner.node.set['sprout']['bash_it']['dir'] = '/Users/wanelo/bash_it'
+      runner.converge(described_recipe)
+      expected_variables = { variables: { bash_it_dir: '/Users/wanelo/bash_it', bash_it_theme: 'wanelo' } }
+      expect(runner).to create_template('/home/fauxhai/.bash_profile').with(expected_variables)
+    end
+  end
+
+  context 'when the bashrc_path attribute is set' do
     it 'creates that file where specified' do
       runner.node.set['sprout']['bash_it']['bashrc_path'] = '/Users/hjhart/.hjhart_bash_profile'
       runner.converge(described_recipe)

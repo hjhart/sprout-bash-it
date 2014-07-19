@@ -1,8 +1,9 @@
 bash_it_version = version_string_for('bash_it')
-bash_it_dir = node['sprout']['bash_it']['dir']
+bash_it_config = node['sprout']['bash_it']
+bash_it_dir = bash_it_config['dir']
 
 git "#{Chef::Config[:file_cache_path]}/bash_it" do
-  repository node['sprout']['bash_it']['repository']
+  repository bash_it_config['repository']
   revision bash_it_version
   destination "#{Chef::Config[:file_cache_path]}/bash_it"
   action :sync
@@ -18,10 +19,11 @@ execute "Copying bash-it's .git to #{node['bash_it']['dir']}" do
   user node['current_user']
 end
 
-template node['sprout']['bash_it']['bashrc_path'] do
+template bash_it_config['bashrc_path'] do
   source 'bash_it/bashrc.erb'
   cookbook 'sprout-base'
   owner node['current_user']
+  variables bash_it_dir: bash_it_dir, bash_it_theme: bash_it_config['theme']
   mode '0777'
 end
 

@@ -1,10 +1,10 @@
 export PATH="/usr/local/bin:$PATH"
 
 # Path to the bash it configuration
-export BASH_IT="<%= node['sprout']['bash_it']['dir'] %>"
+export BASH_IT="<%= @bash_it_dir %>"
 
 # Lock and Load a custom theme file
-export BASH_IT_THEME="<%= node['sprout']['bash_it']['theme'] %>"
+export BASH_IT_THEME="<%= @bash_it_theme %>"
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
