@@ -3,7 +3,6 @@ require 'spec_helper'
 describe 'sprout-bash-it::default' do
   before :all do
     expect(File).not_to be_exists("#{ENV['HOME']}/.bash_it")
-    expect(File).not_to be_exists("#{ENV['HOME']}/.bash_profile")
     expect(system('soloist')).to eq(true)
   end
 
