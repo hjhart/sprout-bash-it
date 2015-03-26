@@ -10,19 +10,19 @@ git "#{Chef::Config[:file_cache_path]}/bash_it" do
 end
 
 directory bash_it_dir do
-  owner node['current_user']
+  owner node['sprout']['user']
   mode '0777'
 end
 
 execute "Copying bash-it's .git to #{node['bash_it']['dir']}" do
   command "rsync -axSH #{Chef::Config[:file_cache_path]}/bash_it/ #{bash_it_dir}"
-  user node['current_user']
+  user node['sprout']['user']
 end
 
 template bash_it_config['bashrc_path'] do
   source 'bash_it/bashrc.erb'
   cookbook 'sprout-bash-it'
-  owner node['current_user']
+  owner node['sprout']['user']
   variables bash_it_dir: bash_it_dir, bash_it_theme: bash_it_config['theme']
   mode '0777'
 end

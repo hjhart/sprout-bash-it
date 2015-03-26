@@ -22,7 +22,7 @@ describe 'sprout-bash-it::default' do
   it 'copies in a .bash_profile to user home' do
     runner.converge(described_recipe)
     expect(runner).to create_template(::File.expand_path('.bash_profile', runner.node['sprout']['home']))
-      .with(owner: runner.node['current_user'])
+      .with(owner: runner.node['sprout']['user'])
   end
 
   context 'when the git repository is specified' do
